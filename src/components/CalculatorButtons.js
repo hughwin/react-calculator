@@ -1,10 +1,13 @@
 import { Button, ButtonGroup, Row } from "react-bootstrap";
 
-const handleClick = (value) => {
-
-}
-
 const CalculatorButtons = (props) => {
+
+  const handleClick = (event) => {
+    let buttonValue = event.target.value
+    console.log(buttonValue)
+    props.setSumChange(buttonValue)
+  }
+
   return (
     <div>
       <Row>
@@ -15,9 +18,9 @@ const CalculatorButtons = (props) => {
       </Row>
       <Row>
         <ButtonGroup>
-          <Button className="custom-btn" value="7">7</Button>
-          <Button className="custom-btn" value="8">8</Button>
-          <Button className="custom-btn" value="9">9</Button>
+          <Button className="custom-btn" value="7" onClick={handleClick}>7</Button>
+          <Button className="custom-btn" value="8" onClick={handleClick}>8</Button>
+          <Button className="custom-btn" value="9" onClick={handleClick}>9</Button>
           <Button className="custom-btn func-button">/</Button>
         </ButtonGroup>
       </Row>
