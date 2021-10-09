@@ -17,7 +17,7 @@ function App() {
     <div className="App calculator">
       <ThemeProvider prefixes={{ btn: "custom-btn " }}>
         <Container fluid>
-          <CalculatorScreen />
+          <CalculatorScreen sum={sum}/>
           <CalculatorButtons />
         </Container>
       </ThemeProvider>
