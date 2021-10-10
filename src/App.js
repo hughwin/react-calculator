@@ -6,7 +6,7 @@ import CalculatorButtons from "./components/CalculatorButtons";
 import { act } from "react-dom/test-utils";
 
 function App() {
-  const [sum, setSum] = useState(0);
+  const [sum, setSum] = useState("");
   const [activeNumber, setActiveNumber] = useState("");
   const [secondaryNumber, setSecondaryNumber] = useState("");
   const [decimalApplied, setDecilmalApplied] = useState(false);
@@ -25,6 +25,10 @@ function App() {
 
   const clearEntry = () => {
     setActiveNumber(activeNumber.substring(0, activeNumber.length - 1));
+    if (secondaryNumber !== "") {
+      setSecondaryNumber("");
+      setSum("");
+    }
   };
 
   const clearAll = () => {
@@ -35,30 +39,38 @@ function App() {
   };
 
   const operatorClicked = (value) => {
-    setSecondaryNumber(activeNumber);
-    setActiveNumber("");
-    setOperator(value);
-    setSum(sum + " " + value);
-    setDecilmalApplied(false);
+    if (activeNumber === "" && value === "-") setActiveNumber("-");
+    else {
+      setSecondaryNumber(activeNumber);
+      setActiveNumber("");
+      setOperator(value);
+      setSum(secondaryNumber + " " + value);
+      setDecilmalApplied(false);
+    }
   };
 
   const compute = () => {
-    console.log("compute clicked... " + operator)
-    if(operator === "*") setActiveNumber(Number(activeNumber) * Number(secondaryNumber))
-    if(operator === "/") setActiveNumber(Number(activeNumber) / Number(secondaryNumber))
-    if(operator === "+") setActiveNumber(Number(activeNumber) + Number(secondaryNumber))
-    if(operator === "-") setActiveNumber(Number(activeNumber) - Number(secondaryNumber))
-    console.log(activeNumber)
-    setSecondaryNumber("")
-    setOperator("")
-    setDecilmalApplied(false)
-  }
+    console.log("compute clicked... " + operator);
+    if (operator === "*")
+      setActiveNumber(String(Number(activeNumber) * Number(secondaryNumber)));
+    if (operator === "/")
+      setActiveNumber(String(Number(activeNumber) / Number(secondaryNumber)));
+    if (operator === "+")
+      setActiveNumber(String(Number(activeNumber) + Number(secondaryNumber)));
+    if (operator === "-")
+      setActiveNumber(String(Number(activeNumber) - Number(secondaryNumber)));
+    setSum(secondaryNumber + " " + operator + " " + activeNumber);
+    console.log(activeNumber);
+    setSecondaryNumber("");
+    setOperator("");
+    setDecilmalApplied(false);
+  };
 
   return (
     <div className="App calculator">
       <ThemeProvider prefixes={{ btn: "custom-btn " }}>
         <Container fluid>
-          <CalculatorScreen sum={activeNumber} />
+          <CalculatorScreen sum={activeNumber} log={sum} />
           <CalculatorButtons
             setSumChange={setSumChange}
             clearEntry={clearEntry}
