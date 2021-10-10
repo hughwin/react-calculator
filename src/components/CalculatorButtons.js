@@ -15,8 +15,13 @@ const CalculatorButtons = (props) => {
     props.clearAll();
   };
 
-  const operatorClicked = () => {
-    props.operatorClicked();
+  const operatorClicked = (event) => {
+    let buttonValue = event.target.value;
+    props.operatorClicked(buttonValue);
+  };
+
+  const compute = () => {
+    props.compute();
   };
 
   return (
@@ -103,7 +108,9 @@ const CalculatorButtons = (props) => {
           >
             .
           </Button>
-          <Button className="custom-btn func-button">=</Button>
+          <Button className="custom-btn func-button" onClick={compute}>
+            =
+          </Button>
           <Button
             className="custom-btn func-button"
             value="+"

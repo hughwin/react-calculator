@@ -29,7 +29,7 @@ function App() {
 
   const clearAll = () => {
     setActiveNumber("");
-    secondaryNumber("");
+    setSecondaryNumber("");
     setSum("");
     setDecilmalApplied(false);
   };
@@ -42,6 +42,18 @@ function App() {
     setDecilmalApplied(false);
   };
 
+  const compute = () => {
+    console.log("compute clicked... " + operator)
+    if(operator === "*") setActiveNumber(Number(activeNumber) * Number(secondaryNumber))
+    if(operator === "/") setActiveNumber(Number(activeNumber) / Number(secondaryNumber))
+    if(operator === "+") setActiveNumber(Number(activeNumber) + Number(secondaryNumber))
+    if(operator === "-") setActiveNumber(Number(activeNumber) - Number(secondaryNumber))
+    console.log(activeNumber)
+    setSecondaryNumber("")
+    setOperator("")
+    setDecilmalApplied(false)
+  }
+
   return (
     <div className="App calculator">
       <ThemeProvider prefixes={{ btn: "custom-btn " }}>
@@ -52,6 +64,7 @@ function App() {
             clearEntry={clearEntry}
             clearAll={clearAll}
             operatorClicked={operatorClicked}
+            compute={compute}
           />
         </Container>
       </ThemeProvider>
