@@ -63,10 +63,8 @@ body {
 .func-button {
   background-color: rgb(188, 63, 163) !important;
   color: white !important;
-
 }
 
 #output {
   font-size: 20px;
 }
-

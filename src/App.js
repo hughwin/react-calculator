@@ -22,12 +22,16 @@ function App() {
     else setActiveNumber(activeNumber + value);
   };
 
+  const clearEntry = () => {
+    setActiveNumber(activeNumber.substring(0, activeNumber.length - 1))
+  }
+
   return (
     <div className="App calculator">
       <ThemeProvider prefixes={{ btn: "custom-btn " }}>
         <Container fluid>
           <CalculatorScreen sum={activeNumber} />
-          <CalculatorButtons setSumChange={setSumChange} />
+          <CalculatorButtons setSumChange={setSumChange} clearEntry={clearEntry}/>
         </Container>
       </ThemeProvider>
     </div>
