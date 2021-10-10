@@ -41,10 +41,11 @@ function App() {
   const operatorClicked = (value) => {
     if (activeNumber === "" && value === "-") setActiveNumber("-");
     else {
+      console.log("active " + activeNumber)
+      setSum(activeNumber + " " + value);
       setSecondaryNumber(activeNumber);
       setActiveNumber("");
       setOperator(value);
-      setSum(secondaryNumber + " " + value);
       setDecilmalApplied(false);
     }
   };
@@ -52,14 +53,14 @@ function App() {
   const compute = () => {
     console.log("compute clicked... " + operator);
     if (operator === "*")
-      setActiveNumber(String(Number(activeNumber) * Number(secondaryNumber)));
+      setActiveNumber(String(Number(secondaryNumber) * Number(activeNumber)));
     if (operator === "/")
-      setActiveNumber(String(Number(activeNumber) / Number(secondaryNumber)));
+      setActiveNumber(String(Number(secondaryNumber) / Number(activeNumber)));
     if (operator === "+")
-      setActiveNumber(String(Number(activeNumber) + Number(secondaryNumber)));
+      setActiveNumber(String(Number(secondaryNumber) + Number(activeNumber)));
     if (operator === "-")
-      setActiveNumber(String(Number(activeNumber) - Number(secondaryNumber)));
-    setSum(secondaryNumber + " " + operator + " " + activeNumber);
+      setActiveNumber(String(Number(secondaryNumber) - Number(activeNumber)));
+    setSum(secondaryNumber + " " + operator + " " + activeNumber + " =");
     console.log(activeNumber);
     setSecondaryNumber("");
     setOperator("");

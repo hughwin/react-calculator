@@ -1,11 +1,14 @@
 import { Row } from "react-bootstrap";
+import { Textfit } from "react-textfit";
 
 const CalculatorScreen = (props) => {
   return (
-    <div class="screen text-center">
+    <div class="screen m-auto">
       <Row id="output">
-        <p>{props.sum}</p>
-        <p>{props.log}</p>
+        <Textfit mode="single" max={16}>
+          <div>{props.log}</div>
+          <div>{props.sum}</div>
+        </Textfit>
       </Row>
     </div>
   );
