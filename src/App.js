@@ -3,13 +3,13 @@ import { Container, ThemeProvider } from "react-bootstrap";
 
 import CalculatorScreen from "./components/CalculatorScreen";
 import CalculatorButtons from "./components/CalculatorButtons";
-import { act } from "react-dom/test-utils";
 
 function App() {
   const [sum, setSum] = useState("");
   const [activeNumber, setActiveNumber] = useState("");
   const [secondaryNumber, setSecondaryNumber] = useState("");
-  const [decimalApplied, setDecilmalApplied] = useState(false);
+  const [decimalApplied, setDecilmalApplied] = useState(false); 
+  // Stateful because in the future may be used for turining buttons on and off.
   const [operator, setOperator] = useState("");
 
   const setSumChange = (value) => {
