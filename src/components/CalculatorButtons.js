@@ -1,7 +1,6 @@
 import { Button, ButtonGroup, Row } from "react-bootstrap";
 
 const CalculatorButtons = (props) => {
-
   const handleNumberPress = (event) => {
     let buttonValue = event.target.value;
     console.log(buttonValue);
@@ -9,15 +8,27 @@ const CalculatorButtons = (props) => {
   };
 
   const clearEntry = () => {
-    props.clearEntry()
-  }
+    props.clearEntry();
+  };
+
+  const clearAll = () => {
+    props.clearAll();
+  };
+
+  const operatorClicked = () => {
+    props.operatorClicked();
+  };
 
   return (
     <div>
       <Row>
         <ButtonGroup>
-          <Button className="custom-btn func-button" onClick={clearEntry}>CE</Button>
-          <Button className="custom-btn func-button">AC</Button>
+          <Button className="custom-btn func-button" onClick={clearEntry}>
+            CE
+          </Button>
+          <Button className="custom-btn func-button" onClick={clearAll}>
+            AC
+          </Button>
         </ButtonGroup>
       </Row>
       <Row>
@@ -31,7 +42,13 @@ const CalculatorButtons = (props) => {
           <Button className="custom-btn" value="9" onClick={handleNumberPress}>
             9
           </Button>
-          <Button className="custom-btn func-button">/</Button>
+          <Button
+            className="custom-btn func-button"
+            value="/"
+            onClick={operatorClicked}
+          >
+            /
+          </Button>
         </ButtonGroup>
       </Row>
       <Row>
@@ -45,7 +62,11 @@ const CalculatorButtons = (props) => {
           <Button className="custom-btn" value="6" onClick={handleNumberPress}>
             6
           </Button>
-          <Button className="custom-btn func-button" onClick={handleNumberPress}>
+          <Button
+            className="custom-btn func-button"
+            value="*"
+            onClick={operatorClicked}
+          >
             x
           </Button>
         </ButtonGroup>
@@ -61,7 +82,13 @@ const CalculatorButtons = (props) => {
           <Button className="custom-btn" value="3" onClick={handleNumberPress}>
             3
           </Button>
-          <Button className="custom-btn func-button">-</Button>
+          <Button
+            className="custom-btn func-button"
+            value="-"
+            onClick={operatorClicked}
+          >
+            -
+          </Button>
         </ButtonGroup>
       </Row>
       <Row>
@@ -77,7 +104,13 @@ const CalculatorButtons = (props) => {
             .
           </Button>
           <Button className="custom-btn func-button">=</Button>
-          <Button className="custom-btn func-button">+</Button>
+          <Button
+            className="custom-btn func-button"
+            value="+"
+            onClick={operatorClicked}
+          >
+            +
+          </Button>
         </ButtonGroup>
       </Row>
     </div>
