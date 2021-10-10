@@ -54,14 +54,20 @@ function App() {
     console.log("compute clicked... " + operator);
     if (operator === "*")
       setActiveNumber(String(Number(secondaryNumber) * Number(activeNumber)));
-    if (operator === "/")
-      setActiveNumber(String(Number(secondaryNumber) / Number(activeNumber)));
+    if (operator === "/"){
+      if(isFinite(Number(secondaryNumber) / Number(activeNumber))){
+        setActiveNumber(String(Number(secondaryNumber) / Number(activeNumber)))
+      }
+      else{
+        window.alert("Please don't divide by 0...")
+        setActiveNumber("")
+      }
+    };
     if (operator === "+")
       setActiveNumber(String(Number(secondaryNumber) + Number(activeNumber)));
     if (operator === "-")
       setActiveNumber(String(Number(secondaryNumber) - Number(activeNumber)));
     setSum(secondaryNumber + " " + operator + " " + activeNumber + " =");
-    console.log(activeNumber);
     setSecondaryNumber("");
     setOperator("");
     setDecilmalApplied(false);
