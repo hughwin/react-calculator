@@ -40,6 +40,10 @@ function App() {
 
   const operatorClicked = (value) => {
     if (activeNumber === "" && value === "-") setActiveNumber("-");
+    if (operator !== ""){
+      setOperator(value);
+      setSum(secondaryNumber + " " + value)
+    }
     else {
       console.log("active " + activeNumber)
       setSum(activeNumber + " " + value);
